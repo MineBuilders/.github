@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="website src" pattern="file[minebuilder-.github]:website//*" />
+</component>
