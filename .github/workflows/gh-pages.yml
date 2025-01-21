@@ -31,11 +31,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
-
-      - name: Trigger mirror
-        run: |
-          sleep 120
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -d '{"event_type": "trigger-mirror"}' \
-            https://api.github.com/repos/MineBuilders/minebuilders.github.io/dispatches
