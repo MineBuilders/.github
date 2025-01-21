@@ -47,8 +47,8 @@ $logo-box-end: min(80vmin, 500px);
     opacity: 1;
   }
   50% {
-    width: $logo-box-end;
-    height: $logo-box-end;
+    width: var(--logo-width);
+    height: var(--logo-height);
   }
   60% {
     //$rotate: -3deg;
@@ -65,8 +65,8 @@ $logo-box-end: min(80vmin, 500px);
     height: $logo-box-begin;
   }
   to {
-    width: $logo-box-end;
-    height: $logo-box-end;
+    width: var(--logo-width);
+    height: var(--logo-height);
   }
 }
 @keyframes logo-decoration-child-enter {
@@ -85,9 +85,12 @@ $logo-box-end: min(80vmin, 500px);
 }
 
 #index-page .logo-box {
+  --logo-width: #{$logo-box-end};
+  --logo-height: #{$logo-box-end};
+
   position: relative;
-  width: $logo-box-end;
-  height: $logo-box-end;
+  width: var(--logo-width);
+  height: var(--logo-height);
   animation: ease logo-box-enter 1.6s forwards;
   overflow: hidden;
 
@@ -130,6 +133,7 @@ $logo-box-end: min(80vmin, 500px);
   .decoration {
     $border-line-color: #d5d5d6;
     $border-jungle-color: $text-color;
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -145,7 +149,6 @@ $logo-box-end: min(80vmin, 500px);
       z-index: 10;
       background: $border-jungle-color;
 
-      --length: #{$logo-box-end};
       --thick: calc(#{$logo-box-begin} / 30);
     }
     @mixin pseudo {
@@ -169,36 +172,36 @@ $logo-box-end: min(80vmin, 500px);
       top: 0;
       right: 0;
       &::after {
-        width: var(--length);
+        width: var(--logo-width);
         height: var(--thick);
         margin-top: calc(50% - var(--thick) / 2);
-        margin-left: calc(-1 * $logo-box-end);
+        margin-left: calc(-1 * var(--logo-width));
       }
     }
     &-3 {
       right: 0;
       bottom: 0;
       &::before {
-        height: calc(var(--length) - 200%);
+        height: calc(var(--logo-height) - 200%);
         width: var(--thick);
         margin-left: calc(50% - var(--thick) / 2);
-        margin-top: calc(-1 * $logo-box-end + 200%);
+        margin-top: calc(-1 * var(--logo-height) + 200%);
       }
       &::after {
-        width: var(--length);
+        width: var(--logo-width);
         height: var(--thick);
         margin-top: calc(50% - var(--thick) / 2);
-        margin-left: calc(-1 * $logo-box-end);
+        margin-left: calc(-1 * var(--logo-width));
       }
     }
     &-4 {
       left: 0;
       bottom: 0;
       &::after {
-        height: var(--length);
+        height: var(--logo-height);
         width: var(--thick);
         margin-left: calc(50% - var(--thick) / 2);
-        margin-top: calc(-1 * $logo-box-end);
+        margin-top: calc(-1 * var(--logo-height));
       }
     }
   }
