@@ -5,10 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MineBuilder</title>
+    <title>MineBuilder - build not only mine.</title>
     <link rel="icon" href="./assets/images/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="./dist/index.css">
 </head>
 <body>
+
+<div id="app">
+    <!--  好像做得有点大了 XD  -->
+    <div id="index-page" style="transform: scale(.8)">
+        <div class="logo-box">
+            <div class="logo">
+                <img src="./assets/images/favicon.png" alt=""/>
+                <canvas class="hide"></canvas>
+            </div>
+            <div class="decoration">
+                <div class="decoration-3"></div>
+                <div class="decoration-2"></div>
+                <div class="decoration-4"></div>
+                <div class="decoration-1"></div>
+            </div>
+        </div>
+        <div class="title">
+            <p class="main">Mine<br>Builder</p>
+            <p class="sub">Build something<br>Minecraft.</p>
+        </div>
+    </div>
+</div>
 
 <script src="./dist/index.js"></script>
 </body>

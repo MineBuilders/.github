@@ -1,3 +1,266 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+$text-color: #ececec;
 html {
-  background: red;
+  color: $text-color;
+  background-color: #1e1f22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2326282e' fill-opacity='1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+#index-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 1150.45px;
+}
+
+// ========== LOGO ==========
+
+$logo-box-begin: 10vmin;
+$logo-box-end: min(80vmin, 500px);
+@keyframes logo-box-enter {
+  0% {
+    width: $logo-box-begin;
+    height: $logo-box-begin;
+    opacity: 0;
+
+    //$rotate: 23deg;
+    $rotate: 45deg;
+    transform: rotateX($rotate) rotateY(-$rotate);
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    width: $logo-box-end;
+    height: $logo-box-end;
+  }
+  60% {
+    //$rotate: -3deg;
+    $rotate: -8deg;
+    transform: rotateX($rotate) rotateY(-$rotate);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
+@keyframes logo-decoration-enter {
+  from {
+    width: $logo-box-begin;
+    height: $logo-box-begin;
+  }
+  to {
+    width: $logo-box-end;
+    height: $logo-box-end;
+  }
+}
+@keyframes logo-decoration-child-enter {
+  from {
+    $size: $logo-box-begin;
+    --size: #{$size};
+    width: #{$size};
+    height: #{$size};
+  }
+  to {
+    $size: min(calc(#{$logo-box-begin} / 2), 30px);
+    --size: #{$size};
+    width: #{$size};
+    height: #{$size};
+  }
+}
+
+#index-page .logo-box {
+  position: relative;
+  width: $logo-box-end;
+  height: $logo-box-end;
+  animation: ease logo-box-enter 1.6s forwards;
+  overflow: hidden;
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    * {
+      transition: opacity ease 0.4s;
+    }
+    $begin-size: $logo-box-begin;
+    @keyframes logo-img-enter {
+      from {
+        width: $begin-size;
+        height: $begin-size;
+      }
+      to {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    img {
+      animation: ease logo-img-enter .5s forwards;
+      animation-delay: .3s;
+      width: $begin-size;
+      height: $begin-size;
+      image-rendering: pixelated;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hide {
+      opacity: 0;
+    }
+  }
+
+  .decoration {
+    $border-line-color: #d5d5d6;
+    $border-jungle-color: $text-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: ease logo-decoration-enter .5s forwards;
+    animation-delay: .3s;
+    & > div {
+      position: absolute;
+      --size: #{$logo-box-begin};
+      width: var(--size);
+      height: var(--size);
+      animation: ease logo-decoration-child-enter .4s forwards;
+      animation-delay: .3s;
+      z-index: 10;
+      background: $border-jungle-color;
+
+      --length: #{$logo-box-end};
+      --thick: calc(#{$logo-box-begin} / 30);
+    }
+    @mixin pseudo {
+      content: '';
+      display: block;
+      background: $border-line-color;
+      z-index: -10;
+    }
+    & > div::before {
+      @include pseudo;
+    }
+    & > div::after {
+      @include pseudo;
+    }
+
+    &-1 {
+      top: 0;
+      left: 0;
+    }
+    &-2 {
+      top: 0;
+      right: 0;
+      &::after {
+        width: var(--length);
+        height: var(--thick);
+        margin-top: calc(50% - var(--thick) / 2);
+        margin-left: calc(-1 * $logo-box-end);
+      }
+    }
+    &-3 {
+      right: 0;
+      bottom: 0;
+      &::before {
+        height: calc(var(--length) - 200%);
+        width: var(--thick);
+        margin-left: calc(50% - var(--thick) / 2);
+        margin-top: calc(-1 * $logo-box-end + 200%);
+      }
+      &::after {
+        width: var(--length);
+        height: var(--thick);
+        margin-top: calc(50% - var(--thick) / 2);
+        margin-left: calc(-1 * $logo-box-end);
+      }
+    }
+    &-4 {
+      left: 0;
+      bottom: 0;
+      &::after {
+        height: var(--length);
+        width: var(--thick);
+        margin-left: calc(50% - var(--thick) / 2);
+        margin-top: calc(-1 * $logo-box-end);
+      }
+    }
+  }
+}
+
+// ========== TEXT ==========
+
+@font-face {
+  font-family: 'LiberationFor7Kicks-Regular';
+  //noinspection ALL
+  src: url('../assets/fonts/LiberationFor7Kicks-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Minecraft-Five-Bold';
+  //noinspection ALL
+  src: url('../assets/fonts/Minecraft-Five-Bold.otf');
+}
+
+@keyframes text-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+#index-page .title {
+  animation: cubic-bezier(1, 0, 0, 1) text-enter 1s forwards;
+  animation-delay: .8s;
+  opacity: 0;
+
+  position: relative;
+  margin-top: 1rem;
+  @function relative-size($divisor) {
+    @return calc($logo-box-end / $divisor);
+  }
+  .main {
+    width: 100%;
+    font-family: LiberationFor7Kicks-Regular, system-ui;
+    font-size: relative-size(7.15);
+    line-height: relative-size(9);
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: relative-size(163.38);
+      bottom: 0;
+      $size: relative-size(30);
+      width: $size;
+      height: $size;
+      background: #cc0000;
+    }
+  }
+  .sub {
+    position: absolute;
+    font-family: Minecraft-Five-Bold, system-ui;
+    font-size: relative-size(30);
+    line-height: relative-size(30);
+    text-align: right;
+    top: relative-size(40);
+    right: relative-size(50);
+  }
 }
