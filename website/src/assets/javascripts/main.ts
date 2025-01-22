@@ -1,24 +1,26 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-let animatedDone = false;
-setTimeout(() => animatedDone = true, 1600);
+const image = document.querySelector<HTMLElement>('#index-page .logo img');
+const canvas = document.querySelector<HTMLElement>('#index-page .logo canvas');
+const logoBox = document.querySelector<HTMLElement>('#index-page .logo-box');
+const titleBox = document.querySelector<HTMLElement>('#index-page .title');
 
-const img = document.querySelector('#index-page .logo img');
-const canvas = document.querySelector('#index-page .logo canvas');
+const animationStart = Date.now();
+let animationDone = false;
+logoBox.addEventListener('animationend', _ =>
+    setTimeout(() => animationDone = true, (Date.now() - animationStart) * 1.3));
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 80);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas });
+const deg = THREE.MathUtils.degToRad(1)
 
 camera.position.set(0, 0, 56);
 renderer.setClearAlpha(0);
 
 const ambientLight = new THREE.AmbientLight(0xFFFFFF, 10);
 scene.add(ambientLight);
-
-animate();
-
-const deg = THREE.MathUtils.degToRad(1)
 
 const loader = new GLTFLoader();
 let logo: THREE.Object3D<THREE.Object3DEventMap>;
@@ -27,6 +29,7 @@ loader.load("./assets/models/logo.glb", data => {
     logo.rotation.y = -90 * deg;
     scene.add(logo);
 
+    animate();
     postShowCanvas();
 });
 
@@ -38,11 +41,11 @@ function animate() {
 }
 
 function postShowCanvas() {
-    if (animatedDone) showCanvas();
+    if (animationDone) showCanvas();
     else setTimeout(postShowCanvas, 100);
 }
 function showCanvas() {
-    img.classList.toggle("hide");
+    image.classList.toggle("hide");
     canvas.classList.toggle("hide");
     const { clientWidth, clientHeight } = renderer.domElement;
     const [ width, height ] = [clientWidth * devicePixelRatio, clientHeight * devicePixelRatio];
@@ -50,8 +53,10 @@ function showCanvas() {
 }
 
 
+
 const bezier = cubicBezier(1, -0.54, 0, 1.54);
-setInterval(() => {
+const autoRotation = setInterval(() => {
+    if (!animationDone) return;
     const endN = 300;
     let n = 0;
     const timer = setInterval(() =>
