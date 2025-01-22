@@ -1,4 +1,6 @@
-## Hi there 👋
+[//]: # (## Hi there 👋)
+
+[![LOGO](./logo-text.png)](https://minebuilders.github.io/)
 
 <!--
 
