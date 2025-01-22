@@ -1,6 +1,6 @@
 [//]: # (## Hi there 👋)
 
-[![LOGO](./logo-text.png)](https://minebuilders.github.io/)
+[![LOGO](https://github.com/MineBuilders/.github/blob/main/profile/logo-text.png?raw=true)](https://minebuilders.github.io/)
 
 <!--
 
