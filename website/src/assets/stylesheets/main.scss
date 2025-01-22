@@ -4,6 +4,7 @@
 }
 
 $text-color: #ececec;
+$accent-red: #cc0000;
 html {
   color: $text-color;
   background-color: #1e1f22;
@@ -127,6 +128,14 @@ $logo-box-end: min(80vmin, 500px);
     }
     .hide {
       opacity: 0;
+    }
+    canvas.active-animation {
+      background-color: transparent;
+      transition: background-color ease .2s;
+    }
+    canvas.active {
+      //background-color: $accent-red;
+      background-color: black;
     }
   }
 
@@ -254,7 +263,7 @@ $logo-box-end: min(80vmin, 500px);
       $size: relative-size(30);
       width: $size;
       height: $size;
-      background: #cc0000;
+      background: $accent-red;
     }
   }
   .sub {
