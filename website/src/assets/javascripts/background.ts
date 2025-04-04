@@ -17,19 +17,32 @@ const fCamera = new THREE.PerspectiveCamera(60, 1, 0.01, 1000);
 
 resize();
 
-// const controls = new OrbitControls(bCamera, bRenderer.domElement);
+// const controls = new OrbitControls(bCamera, background);
 // controls.enableDamping = true;
 // controls.target.set(2.78, -14.23, 20.29)
 
+const desktopSets = [
+    [ [ 3.55, -11.24, 24.52 ], [ -.23, .36, .08 ] ],
+    [ [ 1.09, 4.4, -14.98 ], [ -2.54, .06, 3.1 ] ],
+    [ [ 2.18, -12.47, 16.99 ], [ -1.57, 0, -2.49 ] ],
+    [ [ 9.68, .13, 32.47 ], [ -.48, .37, .19 ] ],
+    [ [ 13.77, 15.33, 14.04 ], [ -.83, .59, .54 ] ],
+    [ [ 21.5, 3.04, 18.85 ], [ -.59, .79, .45 ] ],
+    [ [ -3.74, -7.22, 11.08 ], [ -1.57, 0, 0 ] ],
+    [ [ -.64, -15.63, 14.91 ], [ -.36, .71, .24 ] ],
+    [ [ 1.47, -15.68, 18.09 ], [ .02, .39, -.01 ] ],
+    [ [ 2.14, -12.49, 17.01 ], [ -.41, -.96, -.34 ] ],
+    [ [ 3.71, -13.3, 20.77 ], [ .57, .15, -.1 ] ],
+    // [ [ 0, 0, 0 ], [ 0, 0, 0 ] ],
+];
+const mobileSets = [
+    [ [ 2.78, -14.23, 20.29 ], [ -.26, .1, .03 ] ],
+];
+(([ [ px, py, pz ], [ rx, ry, rz ] ]) => {
+    bCamera.position.set(px, py, pz);
+    bCamera.rotation.set(rx, ry, rz);
+})(getRandom(isMobile ? mobileSets : desktopSets));
 // bCamera.position.set(.5, -16, 22);
-if (isMobile) {
-    bCamera.position.set(3.55, -11.24, 24.52);
-    bCamera.rotation.set(-.23, .36, .08);
-} else {
-    bCamera.position.set(2.78, -14.23, 20.29);
-    bCamera.rotation.set(-.26, .1, .03);
-}
-
 
 enum BackgroundStyle {
     MassFog,
@@ -43,8 +56,7 @@ enum BackgroundStyle {
 const backgroundStyle = (() => {
     const values = Object.values(BackgroundStyle)
         .filter(value => typeof value === 'number') as number[];
-    const randomIndex = Math.floor(Math.random() * values.length);
-    return values[randomIndex];
+    return getRandom(values) as BackgroundStyle;
 })();
 // const backgroundStyle = BackgroundStyle.BlurGlass;
 console.log("backgroundStyle", backgroundStyle);
@@ -86,7 +98,8 @@ window.addEventListener("resize", () => {
 const updateRefractor = (() => {
     if (backgroundStyle != BackgroundStyle.BlurGlass
         && backgroundStyle != BackgroundStyle.BlurColor
-        && backgroundStyle != BackgroundStyle.BlurWire) return () => {};
+        && backgroundStyle != BackgroundStyle.BlurWire) return () => {
+    };
     const loader = new THREE.TextureLoader();
     const normalMap = loader.load('./assets/images/FloorsCheckerboard_S_Normal.jpg');
     normalMap.wrapS = THREE.RepeatWrapping;
@@ -183,4 +196,9 @@ function resize() {
         foreground.clientHeight
     );
     fCamera.updateProjectionMatrix();
+}
+
+function getRandom<T>(array: T[]) {
+    const index = Math.floor(Math.random() * array.length);
+    return array[index];
 }
