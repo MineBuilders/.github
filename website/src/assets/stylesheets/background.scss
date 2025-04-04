@@ -20,3 +20,12 @@
   //mask-image: linear-gradient(to top, transparent 0%, black 40%);
   //background: green;
 }
+
+#index-page .background,
+#index-page .foreground {
+  opacity: 0;
+  transition: opacity .5s;
+  &.rendering {
+    opacity: 1;
+  }
+}

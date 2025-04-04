@@ -157,6 +157,8 @@ loader.load("./assets/models/background.glb", data => {
     fScene.add(fModel);
 
     startRendering = Date.now();
+    background.classList.add("rendering");
+    foreground.classList.add("rendering");
     animate();
 });
 
