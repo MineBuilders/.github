@@ -165,10 +165,11 @@ function animate() {
     // s.innerHTML = `${bCamera.position.x.toFixed(2)},${bCamera.position.y.toFixed(2)},${bCamera.position.z.toFixed(2)}
     // <br>${bCamera.rotation.x.toFixed(2)},${bCamera.rotation.y.toFixed(2)},${bCamera.rotation.z.toFixed(2)}`;
     // controls.update();
+    if (Date.now() - startRendering > 1000) return;
     if (!isMobile && backgroundStyle != BackgroundStyle.MassFog) updateRefractor();
     if (!isMobile && backgroundStyle != BackgroundStyle.MassFog) fCamera.position.copy(bCamera.position);
     if (!isMobile && backgroundStyle != BackgroundStyle.MassFog) fCamera.quaternion.copy(bCamera.quaternion);
-    if (!isMobile || (isMobile && Date.now() - startRendering < 1000)) bRenderer.render(bScene, bCamera);
+    bRenderer.render(bScene, bCamera);
     if (!isMobile && backgroundStyle != BackgroundStyle.MassFog) fRenderer.render(fScene, fCamera);
     requestAnimationFrame(animate);
 }
