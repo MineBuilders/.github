@@ -1,17 +1,14 @@
-@import 'main-panel';
+@import 'variables';
+@import 'background';
 
 * {
   padding: 0;
   margin: 0;
 }
 
-$background-color: #101010;
-$text-color: #ececec;
-$accent-red: #cc0000;
 html {
   color: $text-color;
   background-color: $background-color;
-  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10h10v10H0V10zM10 0h10v10H10V0z' fill='%233b3b3d' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 #app {
@@ -19,9 +16,9 @@ html {
   height: 100%;
 }
 
-#index-page {
+#index-page .logos {
   position: fixed;
-  top: 0;
+  top: $logo-offset-y;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -34,18 +31,6 @@ html {
 }
 
 // ========== LOGO ==========
-
-$logo-box-begin: 10vmin;
-$logo-box-end: min(80vmin, 500px);
-
-#index-page .background {
-  $padding: 5rem;
-  width: calc(100vw - #{$padding});
-  //height: calc(100vh - #{$padding});
-  height: 100vh;
-  position: absolute;
-  background: $background-color;
-}
 
 @keyframes logo-box-enter {
   0% {
@@ -98,7 +83,7 @@ $logo-box-end: min(80vmin, 500px);
   }
 }
 
-#index-page .logo-box {
+#index-page .logos .logo-box {
   --logo-width: #{$logo-box-end};
   --logo-height: #{$logo-box-end};
 
@@ -252,7 +237,7 @@ $logo-box-end: min(80vmin, 500px);
     opacity: 1;
   }
 }
-#index-page .title {
+#index-page .logos .title {
   animation: cubic-bezier(1, 0, 0, 1) text-enter 1s forwards;
   animation-delay: .8s;
   opacity: 0;

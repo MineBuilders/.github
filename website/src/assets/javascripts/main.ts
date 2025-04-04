@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-import './main-panel';
+import './background';
 
 const image = document.querySelector<HTMLElement>('#index-page .logo img');
 const canvas = document.querySelector<HTMLElement>('#index-page .logo canvas');

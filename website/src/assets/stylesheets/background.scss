@@ -1,0 +1,22 @@
+@import "variables";
+
+#index-page .background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  //background: red;
+}
+
+#index-page .foreground {
+  $padding: 8rem;
+  $width: calc($logo-box-end + 2rem + $padding);
+  $height: calc($logo-box-end * 1.223 + 3rem + $padding);
+  position: fixed;
+  width: $width;
+  height: $height;
+  top: calc(100vh / 2 - $height / 2 + $logo-offset-y);
+  left: calc(100vw / 2 - $width / 2);
+  //filter: blur(10px);
+  //mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  //background: green;
+}
